@@ -1,9 +1,25 @@
-import Image from "next/image";
-import { Character } from "../types/character";
-import { getCharacters } from "../lib/rickAndMorty";
+import SearchInput from "../components/SearchInput";
+import CharactersGrid from "../components/CharactersGrid";
+import Pagination from "../components/Pagination";
 
-export default async function Home() {
-  const characters: Character[] = await getCharacters();
+import { searchCharacters } from "../lib/searchCharacters";
+import { getCharacters } from "../lib/getCharacters";
+
+type Props = {
+  searchParams: Promise<{ page?: string; name?: string }>;
+};
+
+export default async function Home({ searchParams }: Props) {
+  const params = await searchParams;
+
+  const page = Number(params.page) || 1;
+  const name = params.name;
+
+  const data = name
+    ? await searchCharacters({ name, page })
+    : await getCharacters(page);
+
+  const { info, results } = data;
 
   return (
     <main className="mx-auto max-w-6xl px-6 py-12">
@@ -11,28 +27,18 @@ export default async function Home() {
         Rick and Morty Characters
       </h1>
 
-      <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {characters.map((character) => (
-          <li
-            key={character.id}
-            className="rounded-xl bg-white p-4 text-center shadow-md transition-transform hover:-translate-y-1"
-          >
-            <Image
-              src={character.image}
-              alt={character.name}
-              width={300}
-              height={300}
-              className="mb-3 mx-auto rounded-lg"
-            />
+      <div className="mb-6 flex justify-center">
+        <SearchInput />
+      </div>
 
-            <h3 className="text-lg font-semibold">{character.name}</h3>
+      <CharactersGrid characters={results} />
 
-            <p className="text-sm text-gray-500">
-              {character.species} — {character.status}
-            </p>
-          </li>
-        ))}
-      </ul>
+      <Pagination
+        page={page}
+        pages={info.pages}
+        hasPrev={!!info.prev}
+        hasNext={!!info.next}
+      />
     </main>
   );
 }
