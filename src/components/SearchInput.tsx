@@ -7,31 +7,55 @@ export default function SearchInput() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [value, setValue] = useState(searchParams.get("name") || "");
+  const [value, setValue] = useState(searchParams.get("name") ?? "");
 
-  function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
-    const name = e.target.value;
-    setValue(name);
+  function handleSearch() {
+    const params = new URLSearchParams();
 
-    const params = new URLSearchParams(searchParams);
-
-    if (name) {
-      params.set("name", name);
+    if (value.trim()) {
+      params.set("name", value.trim());
       params.set("page", "1");
-    } else {
-      params.delete("name");
     }
 
-    router.push(`/?${params.toString()}`);
+    const query = params.toString();
+    router.push(query ? `/?${query}` : "/");
+  }
+
+  function clearSearch() {
+    setValue("");
+    router.push(`/`);
   }
 
   return (
-    <input
-      type="text"
-      placeholder="Search characters..."
-      value={value}
-      onChange={handleSearch}
-      className="w-full max-w-md rounded border px-4 py-2"
-    />
+    <div className="flex w-full max-w-md gap-2">
+      <div className="relative flex-1">
+        <input
+          type="text"
+          placeholder="Search characters..."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleSearch();
+          }}
+          className="w-full rounded border px-4 py-2 pr-10"
+        />
+
+        {value && (
+          <button
+            onClick={clearSearch}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black"
+          >
+            ✕
+          </button>
+        )}
+      </div>
+
+      <button
+        onClick={handleSearch}
+        className="rounded bg-black px-4 py-2 cursor-pointer text-white hover:opacity-80"
+      >
+        Search
+      </button>
+    </div>
   );
 }

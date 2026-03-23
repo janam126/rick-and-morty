@@ -13,7 +13,6 @@ async function fetchCharactersBySearch(
   const query = new URLSearchParams();
 
   if (params.name) query.set("name", params.name);
-  if (params.status) query.set("status", params.status);
   if (params.page) query.set("page", params.page.toString());
 
   const res = await fetch(

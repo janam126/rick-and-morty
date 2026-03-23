@@ -6,7 +6,7 @@ import { searchCharacters } from "../lib/searchCharacters";
 import { getCharacters } from "../lib/getCharacters";
 
 type Props = {
-  searchParams: Promise<{ page?: string; name?: string }>;
+  searchParams: Promise<{ name?: string; page?: string }>;
 };
 
 export default async function Home({ searchParams }: Props) {
@@ -36,6 +36,7 @@ export default async function Home({ searchParams }: Props) {
       <Pagination
         page={page}
         pages={info.pages}
+        searchParams={{ name }}
         hasPrev={!!info.prev}
         hasNext={!!info.next}
       />
