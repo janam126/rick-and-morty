@@ -1,4 +1,4 @@
-export type ApiResponse = {
+export type CharacterApiResponse = {
   info: {
     count: number;
     pages: number;
@@ -14,4 +14,18 @@ export type Character = {
   status: "Alive" | "Dead" | "unknown";
   species: string;
   image: string;
+};
+
+export type EpisodeApiResponse = {
+  info: {
+    next: string | null;
+  };
+  results: Episode[];
+};
+
+export type Episode = {
+  id: number;
+  name: string;
+  air_date: string;
+  episode: string;
 };

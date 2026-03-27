@@ -1,7 +1,7 @@
 import { unstable_cache } from "next/cache";
-import { ApiResponse } from "../types/rickAndMorty";
+import {CharacterApiResponse } from "../types/rickAndMorty";
 
-export async function fetchCharacters(page: number): Promise<ApiResponse> {
+export async function fetchCharacters(page: number): Promise<CharacterApiResponse> {
   const res = await fetch(
     `https://rickandmortyapi.com/api/character?page=${page}`,
     {

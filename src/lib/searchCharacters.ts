@@ -1,5 +1,5 @@
 import { unstable_cache } from "next/cache";
-import { ApiResponse } from "../types/rickAndMorty";
+import { CharacterApiResponse } from "../types/rickAndMorty";
 
 type SearchParams = {
   name?: string;
@@ -9,7 +9,7 @@ type SearchParams = {
 
 async function fetchCharactersBySearch(
   params: SearchParams,
-): Promise<ApiResponse> {
+): Promise<CharacterApiResponse> {
   const query = new URLSearchParams();
 
   if (params.name) query.set("name", params.name);
