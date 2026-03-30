@@ -29,3 +29,14 @@ export type Episode = {
   air_date: string;
   episode: string;
 };
+
+export type Recommendation = {
+  id: number;
+  month: string;
+  episode: {
+    id: number;
+    name: string;
+    airDate: string;
+    episode: string;
+  };
+};

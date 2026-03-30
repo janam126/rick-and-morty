@@ -1,4 +1,4 @@
-import { prisma } from "@/src/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { EpisodeApiResponse } from "@/src/types/rickAndMorty";
 
 export async function GET() {

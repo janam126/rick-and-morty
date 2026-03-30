@@ -4,6 +4,7 @@ import Pagination from "../components/Pagination";
 
 import { searchCharacters } from "../lib/searchCharacters";
 import { getCharacters } from "../lib/getCharacters";
+import Recommendations from "../components/Recommendations";
 
 type Props = {
   searchParams: Promise<{ name?: string; page?: string }>;
@@ -40,6 +41,8 @@ export default async function Home({ searchParams }: Props) {
         hasPrev={!!info.prev}
         hasNext={!!info.next}
       />
+
+      <Recommendations />
     </main>
   );
 }
