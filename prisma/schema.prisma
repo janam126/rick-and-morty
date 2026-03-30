@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Episode {
+  id       Int    @id
+  name     String
+  airDate  String
+  episode  String
+
+  recommendations Recommendation[]
+}
+
+model Recommendation {
+  id        Int    @id @default(autoincrement())
+  month     String
+  episodeId Int
+  episode   Episode @relation(fields: [episodeId], references: [id])
+
+  @@unique([month, episodeId])
+}
