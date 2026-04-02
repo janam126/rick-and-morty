@@ -7,7 +7,8 @@ function getCurrentMonth() {
 }
 
 function getRandomItems<T>(arr: T[], count: number): T[] {
-  return arr.sort(() => 0.5 - Math.random()).slice(0, count);
+  const shuffled = [...arr].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
 }
 
 export async function GET() {
