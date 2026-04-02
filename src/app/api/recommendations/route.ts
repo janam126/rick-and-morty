@@ -43,6 +43,6 @@ export async function GET() {
     return Response.json(recommendations);
   } catch (error) {
     console.error(error);
-    return Response.json({ error: "Failed ❌" }, { status: 500 });
+    return Response.json({ error: "Error" }, { status: 500 });
   }
 }
