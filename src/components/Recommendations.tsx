@@ -1,9 +1,18 @@
 import { Recommendation } from "../types/rickAndMorty";
 
 async function getRecommendations(): Promise<Recommendation[]> {
-  const res = await fetch("http://localhost:3000/api/recommendations", {
+  const baseUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : `https://${process.env.VERCEL_URL}`;
+
+  const res = await fetch(`${baseUrl}/api/recommendations`, {
     cache: "no-store",
   });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch recommendations");
+  }
 
   return res.json();
 }
