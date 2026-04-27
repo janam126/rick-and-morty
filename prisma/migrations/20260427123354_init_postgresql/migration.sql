@@ -1,17 +1,20 @@
 -- CreateTable
 CREATE TABLE "Episode" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
     "airDate" TEXT NOT NULL,
-    "episode" TEXT NOT NULL
+    "episodeCode" TEXT NOT NULL,
+
+    CONSTRAINT "Episode_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Recommendation" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" SERIAL NOT NULL,
     "month" TEXT NOT NULL,
     "episodeId" INTEGER NOT NULL,
-    CONSTRAINT "Recommendation_episodeId_fkey" FOREIGN KEY ("episodeId") REFERENCES "Episode" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+
+    CONSTRAINT "Recommendation_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex

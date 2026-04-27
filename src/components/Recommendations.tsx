@@ -23,13 +23,13 @@ export default async function Recommendations() {
             key={item.id}
             className="rounded-2xl bg-white p-5 shadow-md transition hover:shadow-lg"
           >
-            <h3 className="text-lg font-semibold">{item.episode.name}</h3>
+            <h3 className="text-lg font-semibold">{item.name}</h3>
 
             <div className="mt-2 inline-block rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-700">
-              {item.episode.episode}
+              {item.episodeCode}
             </div>
 
-            <p className="mt-3 text-sm text-gray-500">{item.episode.airDate}</p>
+            <p className="mt-3 text-sm text-gray-500">{item.airDate}</p>
           </div>
         ))}
       </div>

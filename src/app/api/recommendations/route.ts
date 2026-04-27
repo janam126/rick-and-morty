@@ -11,17 +11,31 @@ function getRandomItems<T>(arr: T[], count: number): T[] {
   return shuffled.slice(0, count);
 }
 
+async function getRecommendationsWithEpisodes(month: string) {
+  const recommendations = await prisma.recommendation.findMany({
+    where: { month },
+  });
+
+  const episodes = await prisma.episode.findMany({
+    where: { id: { in: recommendations.map((r) => r.episodeId) } },
+  });
+
+  return episodes;
+}
+
 export async function GET() {
   try {
     const month = getCurrentMonth();
 
     const existing = await prisma.recommendation.findMany({
       where: { month },
-      include: { episode: true },
     });
 
     if (existing.length > 0) {
-      return Response.json(existing);
+      const episodes = await prisma.episode.findMany({
+        where: { id: { in: existing.map((r) => r.episodeId) } },
+      });
+      return Response.json(episodes);
     }
 
     const episodes: Episode[] = await prisma.episode.findMany();
@@ -35,12 +49,7 @@ export async function GET() {
       })),
     });
 
-    const recommendations = await prisma.recommendation.findMany({
-      where: { month },
-      include: { episode: true },
-    });
-
-    return Response.json(recommendations);
+    return Response.json(await getRecommendationsWithEpisodes(month));
   } catch (error) {
     console.error(error);
     return Response.json({ error: "Error" }, { status: 500 });

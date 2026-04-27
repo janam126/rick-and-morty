@@ -17,7 +17,7 @@ export async function GET() {
             id: ep.id,
             name: ep.name,
             airDate: ep.air_date,
-            episode: ep.episode,
+            episodeCode: ep.episode,
           },
         });
       }
