@@ -1,4 +1,4 @@
-import { searchCharacters } from "@/src/lib/searchCharacters";
+import { searchCharacters } from "@/services/api/characters";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {

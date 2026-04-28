@@ -1,12 +1,4 @@
-import { Recommendation } from "../types/rickAndMorty";
-
-async function getRecommendations(): Promise<Recommendation[]> {
-  const res = await fetch("http://localhost:3000/api/recommendations", {
-    cache: "no-store",
-  });
-
-  return res.json();
-}
+import { getRecommendations } from "@/services/db/recommendations";
 
 export default async function Recommendations() {
   const data = await getRecommendations();

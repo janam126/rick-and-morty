@@ -2,8 +2,7 @@ import SearchInput from "../components/SearchInput";
 import CharactersGrid from "../components/CharactersGrid";
 import Pagination from "../components/Pagination";
 
-import { searchCharacters } from "../lib/searchCharacters";
-import { getCharacters } from "../lib/getCharacters";
+import { searchCharacters, getCharacters } from "@/services/api/characters";
 import Recommendations from "../components/Recommendations";
 
 type Props = {
