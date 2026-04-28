@@ -32,11 +32,7 @@ export type Episode = {
 
 export type Recommendation = {
   id: number;
-  month: string;
-  episode: {
-    id: number;
-    name: string;
-    airDate: string;
-    episode: string;
-  };
+  name: string;
+  airDate: string;
+  episodeCode: string;
 };

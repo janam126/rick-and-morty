@@ -1,20 +1,4 @@
-import { Recommendation } from "../types/rickAndMorty";
-
-async function getRecommendations(): Promise<Recommendation[]> {
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
-
-  const res = await fetch(`${baseUrl}/api/recommendations`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch recommendations");
-  }
-
-  return res.json();
-}
+import { getRecommendations } from "@/services/db/recommendations";
 
 export default async function Recommendations() {
   const data = await getRecommendations();
@@ -31,13 +15,13 @@ export default async function Recommendations() {
             key={item.id}
             className="rounded-2xl bg-white p-5 shadow-md transition hover:shadow-lg"
           >
-            <h3 className="text-lg font-semibold">{item.episode.name}</h3>
+            <h3 className="text-lg font-semibold">{item.name}</h3>
 
             <div className="mt-2 inline-block rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-700">
-              {item.episode.episode}
+              {item.episodeCode}
             </div>
 
-            <p className="mt-3 text-sm text-gray-500">{item.episode.airDate}</p>
+            <p className="mt-3 text-sm text-gray-500">{item.airDate}</p>
           </div>
         ))}
       </div>

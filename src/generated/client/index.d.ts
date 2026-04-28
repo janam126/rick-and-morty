@@ -952,36 +952,6 @@ export namespace Prisma {
    */
 
 
-  /**
-   * Count Type EpisodeCountOutputType
-   */
-
-  export type EpisodeCountOutputType = {
-    recommendations: number
-  }
-
-  export type EpisodeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    recommendations?: boolean | EpisodeCountOutputTypeCountRecommendationsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * EpisodeCountOutputType without action
-   */
-  export type EpisodeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the EpisodeCountOutputType
-     */
-    select?: EpisodeCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * EpisodeCountOutputType without action
-   */
-  export type EpisodeCountOutputTypeCountRecommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: RecommendationWhereInput
-  }
-
 
   /**
    * Models
@@ -1011,21 +981,21 @@ export namespace Prisma {
     id: number | null
     name: string | null
     airDate: string | null
-    episode: string | null
+    episodeCode: string | null
   }
 
   export type EpisodeMaxAggregateOutputType = {
     id: number | null
     name: string | null
     airDate: string | null
-    episode: string | null
+    episodeCode: string | null
   }
 
   export type EpisodeCountAggregateOutputType = {
     id: number
     name: number
     airDate: number
-    episode: number
+    episodeCode: number
     _all: number
   }
 
@@ -1042,21 +1012,21 @@ export namespace Prisma {
     id?: true
     name?: true
     airDate?: true
-    episode?: true
+    episodeCode?: true
   }
 
   export type EpisodeMaxAggregateInputType = {
     id?: true
     name?: true
     airDate?: true
-    episode?: true
+    episodeCode?: true
   }
 
   export type EpisodeCountAggregateInputType = {
     id?: true
     name?: true
     airDate?: true
-    episode?: true
+    episodeCode?: true
     _all?: true
   }
 
@@ -1150,7 +1120,7 @@ export namespace Prisma {
     id: number
     name: string
     airDate: string
-    episode: string
+    episodeCode: string
     _count: EpisodeCountAggregateOutputType | null
     _avg: EpisodeAvgAggregateOutputType | null
     _sum: EpisodeSumAggregateOutputType | null
@@ -1176,50 +1146,40 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     airDate?: boolean
-    episode?: boolean
-    recommendations?: boolean | Episode$recommendationsArgs<ExtArgs>
-    _count?: boolean | EpisodeCountOutputTypeDefaultArgs<ExtArgs>
+    episodeCode?: boolean
   }, ExtArgs["result"]["episode"]>
 
   export type EpisodeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     airDate?: boolean
-    episode?: boolean
+    episodeCode?: boolean
   }, ExtArgs["result"]["episode"]>
 
   export type EpisodeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     airDate?: boolean
-    episode?: boolean
+    episodeCode?: boolean
   }, ExtArgs["result"]["episode"]>
 
   export type EpisodeSelectScalar = {
     id?: boolean
     name?: boolean
     airDate?: boolean
-    episode?: boolean
+    episodeCode?: boolean
   }
 
-  export type EpisodeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "airDate" | "episode", ExtArgs["result"]["episode"]>
-  export type EpisodeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    recommendations?: boolean | Episode$recommendationsArgs<ExtArgs>
-    _count?: boolean | EpisodeCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type EpisodeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type EpisodeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type EpisodeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "airDate" | "episodeCode", ExtArgs["result"]["episode"]>
 
   export type $EpisodePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Episode"
-    objects: {
-      recommendations: Prisma.$RecommendationPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       airDate: string
-      episode: string
+      episodeCode: string
     }, ExtArgs["result"]["episode"]>
     composites: {}
   }
@@ -1614,7 +1574,6 @@ export namespace Prisma {
    */
   export interface Prisma__EpisodeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    recommendations<T extends Episode$recommendationsArgs<ExtArgs> = {}>(args?: Subset<T, Episode$recommendationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1647,7 +1606,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Episode", 'Int'>
     readonly name: FieldRef<"Episode", 'String'>
     readonly airDate: FieldRef<"Episode", 'String'>
-    readonly episode: FieldRef<"Episode", 'String'>
+    readonly episodeCode: FieldRef<"Episode", 'String'>
   }
     
 
@@ -1664,10 +1623,6 @@ export namespace Prisma {
      * Omit specific fields from the Episode
      */
     omit?: EpisodeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EpisodeInclude<ExtArgs> | null
     /**
      * Filter, which Episode to fetch.
      */
@@ -1687,10 +1642,6 @@ export namespace Prisma {
      */
     omit?: EpisodeOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EpisodeInclude<ExtArgs> | null
-    /**
      * Filter, which Episode to fetch.
      */
     where: EpisodeWhereUniqueInput
@@ -1708,10 +1659,6 @@ export namespace Prisma {
      * Omit specific fields from the Episode
      */
     omit?: EpisodeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EpisodeInclude<ExtArgs> | null
     /**
      * Filter, which Episode to fetch.
      */
@@ -1761,10 +1708,6 @@ export namespace Prisma {
      */
     omit?: EpisodeOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EpisodeInclude<ExtArgs> | null
-    /**
      * Filter, which Episode to fetch.
      */
     where?: EpisodeWhereInput
@@ -1812,10 +1755,6 @@ export namespace Prisma {
      * Omit specific fields from the Episode
      */
     omit?: EpisodeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EpisodeInclude<ExtArgs> | null
     /**
      * Filter, which Episodes to fetch.
      */
@@ -1865,10 +1804,6 @@ export namespace Prisma {
      */
     omit?: EpisodeOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EpisodeInclude<ExtArgs> | null
-    /**
      * The data needed to create a Episode.
      */
     data: XOR<EpisodeCreateInput, EpisodeUncheckedCreateInput>
@@ -1882,6 +1817,7 @@ export namespace Prisma {
      * The data used to create many Episodes.
      */
     data: EpisodeCreateManyInput | EpisodeCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -1900,6 +1836,7 @@ export namespace Prisma {
      * The data used to create many Episodes.
      */
     data: EpisodeCreateManyInput | EpisodeCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -1914,10 +1851,6 @@ export namespace Prisma {
      * Omit specific fields from the Episode
      */
     omit?: EpisodeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EpisodeInclude<ExtArgs> | null
     /**
      * The data needed to update a Episode.
      */
@@ -1985,10 +1918,6 @@ export namespace Prisma {
      */
     omit?: EpisodeOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EpisodeInclude<ExtArgs> | null
-    /**
      * The filter to search for the Episode to update in case it exists.
      */
     where: EpisodeWhereUniqueInput
@@ -2015,10 +1944,6 @@ export namespace Prisma {
      */
     omit?: EpisodeOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EpisodeInclude<ExtArgs> | null
-    /**
      * Filter which Episode to delete.
      */
     where: EpisodeWhereUniqueInput
@@ -2039,30 +1964,6 @@ export namespace Prisma {
   }
 
   /**
-   * Episode.recommendations
-   */
-  export type Episode$recommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Recommendation
-     */
-    select?: RecommendationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Recommendation
-     */
-    omit?: RecommendationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationInclude<ExtArgs> | null
-    where?: RecommendationWhereInput
-    orderBy?: RecommendationOrderByWithRelationInput | RecommendationOrderByWithRelationInput[]
-    cursor?: RecommendationWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: RecommendationScalarFieldEnum | RecommendationScalarFieldEnum[]
-  }
-
-  /**
    * Episode without action
    */
   export type EpisodeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2074,10 +1975,6 @@ export namespace Prisma {
      * Omit specific fields from the Episode
      */
     omit?: EpisodeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: EpisodeInclude<ExtArgs> | null
   }
 
 
@@ -2267,21 +2164,18 @@ export namespace Prisma {
     id?: boolean
     month?: boolean
     episodeId?: boolean
-    episode?: boolean | EpisodeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["recommendation"]>
 
   export type RecommendationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     month?: boolean
     episodeId?: boolean
-    episode?: boolean | EpisodeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["recommendation"]>
 
   export type RecommendationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     month?: boolean
     episodeId?: boolean
-    episode?: boolean | EpisodeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["recommendation"]>
 
   export type RecommendationSelectScalar = {
@@ -2291,21 +2185,10 @@ export namespace Prisma {
   }
 
   export type RecommendationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "month" | "episodeId", ExtArgs["result"]["recommendation"]>
-  export type RecommendationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    episode?: boolean | EpisodeDefaultArgs<ExtArgs>
-  }
-  export type RecommendationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    episode?: boolean | EpisodeDefaultArgs<ExtArgs>
-  }
-  export type RecommendationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    episode?: boolean | EpisodeDefaultArgs<ExtArgs>
-  }
 
   export type $RecommendationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Recommendation"
-    objects: {
-      episode: Prisma.$EpisodePayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
       month: string
@@ -2704,7 +2587,6 @@ export namespace Prisma {
    */
   export interface Prisma__RecommendationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    episode<T extends EpisodeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EpisodeDefaultArgs<ExtArgs>>): Prisma__EpisodeClient<$Result.GetResult<Prisma.$EpisodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2754,10 +2636,6 @@ export namespace Prisma {
      */
     omit?: RecommendationOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationInclude<ExtArgs> | null
-    /**
      * Filter, which Recommendation to fetch.
      */
     where: RecommendationWhereUniqueInput
@@ -2776,10 +2654,6 @@ export namespace Prisma {
      */
     omit?: RecommendationOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationInclude<ExtArgs> | null
-    /**
      * Filter, which Recommendation to fetch.
      */
     where: RecommendationWhereUniqueInput
@@ -2797,10 +2671,6 @@ export namespace Prisma {
      * Omit specific fields from the Recommendation
      */
     omit?: RecommendationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationInclude<ExtArgs> | null
     /**
      * Filter, which Recommendation to fetch.
      */
@@ -2850,10 +2720,6 @@ export namespace Prisma {
      */
     omit?: RecommendationOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationInclude<ExtArgs> | null
-    /**
      * Filter, which Recommendation to fetch.
      */
     where?: RecommendationWhereInput
@@ -2901,10 +2767,6 @@ export namespace Prisma {
      * Omit specific fields from the Recommendation
      */
     omit?: RecommendationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationInclude<ExtArgs> | null
     /**
      * Filter, which Recommendations to fetch.
      */
@@ -2954,10 +2816,6 @@ export namespace Prisma {
      */
     omit?: RecommendationOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationInclude<ExtArgs> | null
-    /**
      * The data needed to create a Recommendation.
      */
     data: XOR<RecommendationCreateInput, RecommendationUncheckedCreateInput>
@@ -2971,6 +2829,7 @@ export namespace Prisma {
      * The data used to create many Recommendations.
      */
     data: RecommendationCreateManyInput | RecommendationCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -2989,10 +2848,7 @@ export namespace Prisma {
      * The data used to create many Recommendations.
      */
     data: RecommendationCreateManyInput | RecommendationCreateManyInput[]
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationIncludeCreateManyAndReturn<ExtArgs> | null
+    skipDuplicates?: boolean
   }
 
   /**
@@ -3007,10 +2863,6 @@ export namespace Prisma {
      * Omit specific fields from the Recommendation
      */
     omit?: RecommendationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationInclude<ExtArgs> | null
     /**
      * The data needed to update a Recommendation.
      */
@@ -3063,10 +2915,6 @@ export namespace Prisma {
      * Limit how many Recommendations to update.
      */
     limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3081,10 +2929,6 @@ export namespace Prisma {
      * Omit specific fields from the Recommendation
      */
     omit?: RecommendationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationInclude<ExtArgs> | null
     /**
      * The filter to search for the Recommendation to update in case it exists.
      */
@@ -3111,10 +2955,6 @@ export namespace Prisma {
      * Omit specific fields from the Recommendation
      */
     omit?: RecommendationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationInclude<ExtArgs> | null
     /**
      * Filter which Recommendation to delete.
      */
@@ -3147,10 +2987,6 @@ export namespace Prisma {
      * Omit specific fields from the Recommendation
      */
     omit?: RecommendationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RecommendationInclude<ExtArgs> | null
   }
 
 
@@ -3159,6 +2995,9 @@ export namespace Prisma {
    */
 
   export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
   };
 
@@ -3169,7 +3008,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     airDate: 'airDate',
-    episode: 'episode'
+    episodeCode: 'episodeCode'
   };
 
   export type EpisodeScalarFieldEnum = (typeof EpisodeScalarFieldEnum)[keyof typeof EpisodeScalarFieldEnum]
@@ -3192,6 +3031,14 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
   /**
    * Field references
    */
@@ -3205,6 +3052,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -3212,9 +3066,23 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -3228,16 +3096,14 @@ export namespace Prisma {
     id?: IntFilter<"Episode"> | number
     name?: StringFilter<"Episode"> | string
     airDate?: StringFilter<"Episode"> | string
-    episode?: StringFilter<"Episode"> | string
-    recommendations?: RecommendationListRelationFilter
+    episodeCode?: StringFilter<"Episode"> | string
   }
 
   export type EpisodeOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     airDate?: SortOrder
-    episode?: SortOrder
-    recommendations?: RecommendationOrderByRelationAggregateInput
+    episodeCode?: SortOrder
   }
 
   export type EpisodeWhereUniqueInput = Prisma.AtLeast<{
@@ -3247,15 +3113,14 @@ export namespace Prisma {
     NOT?: EpisodeWhereInput | EpisodeWhereInput[]
     name?: StringFilter<"Episode"> | string
     airDate?: StringFilter<"Episode"> | string
-    episode?: StringFilter<"Episode"> | string
-    recommendations?: RecommendationListRelationFilter
+    episodeCode?: StringFilter<"Episode"> | string
   }, "id">
 
   export type EpisodeOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     airDate?: SortOrder
-    episode?: SortOrder
+    episodeCode?: SortOrder
     _count?: EpisodeCountOrderByAggregateInput
     _avg?: EpisodeAvgOrderByAggregateInput
     _max?: EpisodeMaxOrderByAggregateInput
@@ -3270,7 +3135,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Episode"> | number
     name?: StringWithAggregatesFilter<"Episode"> | string
     airDate?: StringWithAggregatesFilter<"Episode"> | string
-    episode?: StringWithAggregatesFilter<"Episode"> | string
+    episodeCode?: StringWithAggregatesFilter<"Episode"> | string
   }
 
   export type RecommendationWhereInput = {
@@ -3280,14 +3145,12 @@ export namespace Prisma {
     id?: IntFilter<"Recommendation"> | number
     month?: StringFilter<"Recommendation"> | string
     episodeId?: IntFilter<"Recommendation"> | number
-    episode?: XOR<EpisodeScalarRelationFilter, EpisodeWhereInput>
   }
 
   export type RecommendationOrderByWithRelationInput = {
     id?: SortOrder
     month?: SortOrder
     episodeId?: SortOrder
-    episode?: EpisodeOrderByWithRelationInput
   }
 
   export type RecommendationWhereUniqueInput = Prisma.AtLeast<{
@@ -3298,7 +3161,6 @@ export namespace Prisma {
     NOT?: RecommendationWhereInput | RecommendationWhereInput[]
     month?: StringFilter<"Recommendation"> | string
     episodeId?: IntFilter<"Recommendation"> | number
-    episode?: XOR<EpisodeScalarRelationFilter, EpisodeWhereInput>
   }, "id" | "month_episodeId">
 
   export type RecommendationOrderByWithAggregationInput = {
@@ -3325,58 +3187,54 @@ export namespace Prisma {
     id: number
     name: string
     airDate: string
-    episode: string
-    recommendations?: RecommendationCreateNestedManyWithoutEpisodeInput
+    episodeCode: string
   }
 
   export type EpisodeUncheckedCreateInput = {
     id: number
     name: string
     airDate: string
-    episode: string
-    recommendations?: RecommendationUncheckedCreateNestedManyWithoutEpisodeInput
+    episodeCode: string
   }
 
   export type EpisodeUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     airDate?: StringFieldUpdateOperationsInput | string
-    episode?: StringFieldUpdateOperationsInput | string
-    recommendations?: RecommendationUpdateManyWithoutEpisodeNestedInput
+    episodeCode?: StringFieldUpdateOperationsInput | string
   }
 
   export type EpisodeUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     airDate?: StringFieldUpdateOperationsInput | string
-    episode?: StringFieldUpdateOperationsInput | string
-    recommendations?: RecommendationUncheckedUpdateManyWithoutEpisodeNestedInput
+    episodeCode?: StringFieldUpdateOperationsInput | string
   }
 
   export type EpisodeCreateManyInput = {
     id: number
     name: string
     airDate: string
-    episode: string
+    episodeCode: string
   }
 
   export type EpisodeUpdateManyMutationInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     airDate?: StringFieldUpdateOperationsInput | string
-    episode?: StringFieldUpdateOperationsInput | string
+    episodeCode?: StringFieldUpdateOperationsInput | string
   }
 
   export type EpisodeUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     airDate?: StringFieldUpdateOperationsInput | string
-    episode?: StringFieldUpdateOperationsInput | string
+    episodeCode?: StringFieldUpdateOperationsInput | string
   }
 
   export type RecommendationCreateInput = {
     month: string
-    episode: EpisodeCreateNestedOneWithoutRecommendationsInput
+    episodeId: number
   }
 
   export type RecommendationUncheckedCreateInput = {
@@ -3387,7 +3245,7 @@ export namespace Prisma {
 
   export type RecommendationUpdateInput = {
     month?: StringFieldUpdateOperationsInput | string
-    episode?: EpisodeUpdateOneRequiredWithoutRecommendationsNestedInput
+    episodeId?: IntFieldUpdateOperationsInput | number
   }
 
   export type RecommendationUncheckedUpdateInput = {
@@ -3404,6 +3262,7 @@ export namespace Prisma {
 
   export type RecommendationUpdateManyMutationInput = {
     month?: StringFieldUpdateOperationsInput | string
+    episodeId?: IntFieldUpdateOperationsInput | number
   }
 
   export type RecommendationUncheckedUpdateManyInput = {
@@ -3414,8 +3273,8 @@ export namespace Prisma {
 
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -3425,8 +3284,8 @@ export namespace Prisma {
 
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -3434,24 +3293,15 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type RecommendationListRelationFilter = {
-    every?: RecommendationWhereInput
-    some?: RecommendationWhereInput
-    none?: RecommendationWhereInput
-  }
-
-  export type RecommendationOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type EpisodeCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     airDate?: SortOrder
-    episode?: SortOrder
+    episodeCode?: SortOrder
   }
 
   export type EpisodeAvgOrderByAggregateInput = {
@@ -3462,14 +3312,14 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     airDate?: SortOrder
-    episode?: SortOrder
+    episodeCode?: SortOrder
   }
 
   export type EpisodeMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     airDate?: SortOrder
-    episode?: SortOrder
+    episodeCode?: SortOrder
   }
 
   export type EpisodeSumOrderByAggregateInput = {
@@ -3478,8 +3328,8 @@ export namespace Prisma {
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -3494,8 +3344,8 @@ export namespace Prisma {
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -3503,15 +3353,11 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type EpisodeScalarRelationFilter = {
-    is?: EpisodeWhereInput
-    isNot?: EpisodeWhereInput
   }
 
   export type RecommendationMonthEpisodeIdCompoundUniqueInput = {
@@ -3547,20 +3393,6 @@ export namespace Prisma {
     episodeId?: SortOrder
   }
 
-  export type RecommendationCreateNestedManyWithoutEpisodeInput = {
-    create?: XOR<RecommendationCreateWithoutEpisodeInput, RecommendationUncheckedCreateWithoutEpisodeInput> | RecommendationCreateWithoutEpisodeInput[] | RecommendationUncheckedCreateWithoutEpisodeInput[]
-    connectOrCreate?: RecommendationCreateOrConnectWithoutEpisodeInput | RecommendationCreateOrConnectWithoutEpisodeInput[]
-    createMany?: RecommendationCreateManyEpisodeInputEnvelope
-    connect?: RecommendationWhereUniqueInput | RecommendationWhereUniqueInput[]
-  }
-
-  export type RecommendationUncheckedCreateNestedManyWithoutEpisodeInput = {
-    create?: XOR<RecommendationCreateWithoutEpisodeInput, RecommendationUncheckedCreateWithoutEpisodeInput> | RecommendationCreateWithoutEpisodeInput[] | RecommendationUncheckedCreateWithoutEpisodeInput[]
-    connectOrCreate?: RecommendationCreateOrConnectWithoutEpisodeInput | RecommendationCreateOrConnectWithoutEpisodeInput[]
-    createMany?: RecommendationCreateManyEpisodeInputEnvelope
-    connect?: RecommendationWhereUniqueInput | RecommendationWhereUniqueInput[]
-  }
-
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -3573,52 +3405,10 @@ export namespace Prisma {
     set?: string
   }
 
-  export type RecommendationUpdateManyWithoutEpisodeNestedInput = {
-    create?: XOR<RecommendationCreateWithoutEpisodeInput, RecommendationUncheckedCreateWithoutEpisodeInput> | RecommendationCreateWithoutEpisodeInput[] | RecommendationUncheckedCreateWithoutEpisodeInput[]
-    connectOrCreate?: RecommendationCreateOrConnectWithoutEpisodeInput | RecommendationCreateOrConnectWithoutEpisodeInput[]
-    upsert?: RecommendationUpsertWithWhereUniqueWithoutEpisodeInput | RecommendationUpsertWithWhereUniqueWithoutEpisodeInput[]
-    createMany?: RecommendationCreateManyEpisodeInputEnvelope
-    set?: RecommendationWhereUniqueInput | RecommendationWhereUniqueInput[]
-    disconnect?: RecommendationWhereUniqueInput | RecommendationWhereUniqueInput[]
-    delete?: RecommendationWhereUniqueInput | RecommendationWhereUniqueInput[]
-    connect?: RecommendationWhereUniqueInput | RecommendationWhereUniqueInput[]
-    update?: RecommendationUpdateWithWhereUniqueWithoutEpisodeInput | RecommendationUpdateWithWhereUniqueWithoutEpisodeInput[]
-    updateMany?: RecommendationUpdateManyWithWhereWithoutEpisodeInput | RecommendationUpdateManyWithWhereWithoutEpisodeInput[]
-    deleteMany?: RecommendationScalarWhereInput | RecommendationScalarWhereInput[]
-  }
-
-  export type RecommendationUncheckedUpdateManyWithoutEpisodeNestedInput = {
-    create?: XOR<RecommendationCreateWithoutEpisodeInput, RecommendationUncheckedCreateWithoutEpisodeInput> | RecommendationCreateWithoutEpisodeInput[] | RecommendationUncheckedCreateWithoutEpisodeInput[]
-    connectOrCreate?: RecommendationCreateOrConnectWithoutEpisodeInput | RecommendationCreateOrConnectWithoutEpisodeInput[]
-    upsert?: RecommendationUpsertWithWhereUniqueWithoutEpisodeInput | RecommendationUpsertWithWhereUniqueWithoutEpisodeInput[]
-    createMany?: RecommendationCreateManyEpisodeInputEnvelope
-    set?: RecommendationWhereUniqueInput | RecommendationWhereUniqueInput[]
-    disconnect?: RecommendationWhereUniqueInput | RecommendationWhereUniqueInput[]
-    delete?: RecommendationWhereUniqueInput | RecommendationWhereUniqueInput[]
-    connect?: RecommendationWhereUniqueInput | RecommendationWhereUniqueInput[]
-    update?: RecommendationUpdateWithWhereUniqueWithoutEpisodeInput | RecommendationUpdateWithWhereUniqueWithoutEpisodeInput[]
-    updateMany?: RecommendationUpdateManyWithWhereWithoutEpisodeInput | RecommendationUpdateManyWithWhereWithoutEpisodeInput[]
-    deleteMany?: RecommendationScalarWhereInput | RecommendationScalarWhereInput[]
-  }
-
-  export type EpisodeCreateNestedOneWithoutRecommendationsInput = {
-    create?: XOR<EpisodeCreateWithoutRecommendationsInput, EpisodeUncheckedCreateWithoutRecommendationsInput>
-    connectOrCreate?: EpisodeCreateOrConnectWithoutRecommendationsInput
-    connect?: EpisodeWhereUniqueInput
-  }
-
-  export type EpisodeUpdateOneRequiredWithoutRecommendationsNestedInput = {
-    create?: XOR<EpisodeCreateWithoutRecommendationsInput, EpisodeUncheckedCreateWithoutRecommendationsInput>
-    connectOrCreate?: EpisodeCreateOrConnectWithoutRecommendationsInput
-    upsert?: EpisodeUpsertWithoutRecommendationsInput
-    connect?: EpisodeWhereUniqueInput
-    update?: XOR<XOR<EpisodeUpdateToOneWithWhereWithoutRecommendationsInput, EpisodeUpdateWithoutRecommendationsInput>, EpisodeUncheckedUpdateWithoutRecommendationsInput>
-  }
-
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -3628,8 +3418,8 @@ export namespace Prisma {
 
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -3642,8 +3432,8 @@ export namespace Prisma {
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
@@ -3658,8 +3448,8 @@ export namespace Prisma {
 
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
     lt?: number | FloatFieldRefInput<$PrismaModel>
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
@@ -3669,8 +3459,8 @@ export namespace Prisma {
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
     lt?: string | StringFieldRefInput<$PrismaModel>
     lte?: string | StringFieldRefInput<$PrismaModel>
     gt?: string | StringFieldRefInput<$PrismaModel>
@@ -3682,112 +3472,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type RecommendationCreateWithoutEpisodeInput = {
-    month: string
-  }
-
-  export type RecommendationUncheckedCreateWithoutEpisodeInput = {
-    id?: number
-    month: string
-  }
-
-  export type RecommendationCreateOrConnectWithoutEpisodeInput = {
-    where: RecommendationWhereUniqueInput
-    create: XOR<RecommendationCreateWithoutEpisodeInput, RecommendationUncheckedCreateWithoutEpisodeInput>
-  }
-
-  export type RecommendationCreateManyEpisodeInputEnvelope = {
-    data: RecommendationCreateManyEpisodeInput | RecommendationCreateManyEpisodeInput[]
-  }
-
-  export type RecommendationUpsertWithWhereUniqueWithoutEpisodeInput = {
-    where: RecommendationWhereUniqueInput
-    update: XOR<RecommendationUpdateWithoutEpisodeInput, RecommendationUncheckedUpdateWithoutEpisodeInput>
-    create: XOR<RecommendationCreateWithoutEpisodeInput, RecommendationUncheckedCreateWithoutEpisodeInput>
-  }
-
-  export type RecommendationUpdateWithWhereUniqueWithoutEpisodeInput = {
-    where: RecommendationWhereUniqueInput
-    data: XOR<RecommendationUpdateWithoutEpisodeInput, RecommendationUncheckedUpdateWithoutEpisodeInput>
-  }
-
-  export type RecommendationUpdateManyWithWhereWithoutEpisodeInput = {
-    where: RecommendationScalarWhereInput
-    data: XOR<RecommendationUpdateManyMutationInput, RecommendationUncheckedUpdateManyWithoutEpisodeInput>
-  }
-
-  export type RecommendationScalarWhereInput = {
-    AND?: RecommendationScalarWhereInput | RecommendationScalarWhereInput[]
-    OR?: RecommendationScalarWhereInput[]
-    NOT?: RecommendationScalarWhereInput | RecommendationScalarWhereInput[]
-    id?: IntFilter<"Recommendation"> | number
-    month?: StringFilter<"Recommendation"> | string
-    episodeId?: IntFilter<"Recommendation"> | number
-  }
-
-  export type EpisodeCreateWithoutRecommendationsInput = {
-    id: number
-    name: string
-    airDate: string
-    episode: string
-  }
-
-  export type EpisodeUncheckedCreateWithoutRecommendationsInput = {
-    id: number
-    name: string
-    airDate: string
-    episode: string
-  }
-
-  export type EpisodeCreateOrConnectWithoutRecommendationsInput = {
-    where: EpisodeWhereUniqueInput
-    create: XOR<EpisodeCreateWithoutRecommendationsInput, EpisodeUncheckedCreateWithoutRecommendationsInput>
-  }
-
-  export type EpisodeUpsertWithoutRecommendationsInput = {
-    update: XOR<EpisodeUpdateWithoutRecommendationsInput, EpisodeUncheckedUpdateWithoutRecommendationsInput>
-    create: XOR<EpisodeCreateWithoutRecommendationsInput, EpisodeUncheckedCreateWithoutRecommendationsInput>
-    where?: EpisodeWhereInput
-  }
-
-  export type EpisodeUpdateToOneWithWhereWithoutRecommendationsInput = {
-    where?: EpisodeWhereInput
-    data: XOR<EpisodeUpdateWithoutRecommendationsInput, EpisodeUncheckedUpdateWithoutRecommendationsInput>
-  }
-
-  export type EpisodeUpdateWithoutRecommendationsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    airDate?: StringFieldUpdateOperationsInput | string
-    episode?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type EpisodeUncheckedUpdateWithoutRecommendationsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    airDate?: StringFieldUpdateOperationsInput | string
-    episode?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type RecommendationCreateManyEpisodeInput = {
-    id?: number
-    month: string
-  }
-
-  export type RecommendationUpdateWithoutEpisodeInput = {
-    month?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type RecommendationUncheckedUpdateWithoutEpisodeInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    month?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type RecommendationUncheckedUpdateManyWithoutEpisodeInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    month?: StringFieldUpdateOperationsInput | string
   }
 
 

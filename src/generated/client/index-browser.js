@@ -114,6 +114,9 @@ Prisma.NullTypes = NullTypes
  */
 
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
@@ -121,7 +124,7 @@ exports.Prisma.EpisodeScalarFieldEnum = {
   id: 'id',
   name: 'name',
   airDate: 'airDate',
-  episode: 'episode'
+  episodeCode: 'episodeCode'
 };
 
 exports.Prisma.RecommendationScalarFieldEnum = {
@@ -133,6 +136,11 @@ exports.Prisma.RecommendationScalarFieldEnum = {
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
 };
 
 

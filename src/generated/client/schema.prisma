@@ -4,23 +4,20 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
 model Episode {
-  id      Int    @id
-  name    String
-  airDate String
-  episode String
-
-  recommendations Recommendation[]
+  id          Int    @id
+  name        String
+  airDate     String
+  episodeCode String
 }
 
 model Recommendation {
-  id        Int     @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
   month     String
   episodeId Int
-  episode   Episode @relation(fields: [episodeId], references: [id])
 
   @@unique([month, episodeId])
 }
